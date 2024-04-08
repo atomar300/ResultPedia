@@ -8,8 +8,5 @@ import java.util.List;
 public interface IResultService {
 
     void createResult(ResultDTO resultDTO);
-    void updateResult(String id, ResultDTO resultDTO);
-    void deleteResult(String id);
-    Result getResultById(String id);
     List<Result> getAllResults();
 }

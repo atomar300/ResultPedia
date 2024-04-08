@@ -27,32 +27,12 @@ public class CourseService implements ICourseService{
         return courseRepository.findAll();
     }
 
-    @Override
-    public Course getCourseById(String id){
-        Optional<Course> courseDate = courseRepository.findById(id);
-        if (!courseDate.isPresent()){
-            throw new CourseNotFoundException("No Course found with the given ID: " + id);
-        }
-        return courseDate.get();
-    }
+
 
     @Override
     public Course createCourse(Course course){
         return courseRepository.save(course);
     }
 
-
-    @Override
-    public Course updateCourse(String id, Course course){
-        course.setId(id);
-        return courseRepository.save(course);
-    }
-
-    @Override
-    public void deleteCourse(String id){
-        List<Result> resultsToBeDeleted = resultRepository.findByCourse(getCourseById(id));
-        resultRepository.deleteAll(resultsToBeDeleted);
-        courseRepository.deleteById(id);
-    }
 
 }

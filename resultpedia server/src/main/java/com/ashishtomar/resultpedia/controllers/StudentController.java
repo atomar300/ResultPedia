@@ -31,36 +31,6 @@ public class StudentController {
 
 
 
-    @PutMapping("/student/{id}")
-    public ResponseEntity<String> updateStudent(@PathVariable("id") String id, @Valid @RequestBody Student student) {
-
-        studentService.updateStudent(id, student);
-
-        return new ResponseEntity<>("Student was updated successfully!", HttpStatus.OK);
-    }
-
-
-
-    @DeleteMapping("/student/{id}")
-    public ResponseEntity<String> deleteStudent(@PathVariable("id") String id){
-
-        studentService.deleteStudent(id);
-
-        return new ResponseEntity<>("Student was deleted successfully!", HttpStatus.OK);
-    }
-
-
-
-    @GetMapping("/student/{id}")
-    public ResponseEntity<Student> getOneStudent(@PathVariable("id") String id){
-
-        Student student = studentService.getStudentById(id);
-
-        return new ResponseEntity<>(student, HttpStatus.OK);
-    }
-
-
-
     @GetMapping("/students")
     public ResponseEntity<List<Student>> getAllStudents(){
 

@@ -26,14 +26,6 @@ public class StudentService implements IStudentService {
         return studentRepository.findAll();
     }
 
-    @Override
-    public Student getStudentById(String id){
-        Optional<Student> studentData = studentRepository.findById(id);
-        if (!studentData.isPresent()){
-            throw new StudentNotFoundException("No Student found with the given ID: " + id);
-        }
-        return studentData.get();
-    }
 
     @Override
     public Student createStudent(Student student){
@@ -43,18 +35,5 @@ public class StudentService implements IStudentService {
         return studentRepository.save(student);
     }
 
-
-    @Override
-    public Student updateStudent(String id, Student student){
-        student.setId(id);
-        return studentRepository.save(student);
-    }
-
-    @Override
-    public void deleteStudent(String id){
-        List<Result> resultsToBeDeleted = resultRepository.findByStudent(getStudentById(id));
-        resultRepository.deleteAll(resultsToBeDeleted);
-        studentRepository.deleteById(id);
-    }
 
 }

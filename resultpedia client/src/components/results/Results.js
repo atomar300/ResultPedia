@@ -28,24 +28,30 @@ const Results = () => {
                     <PageTitle title="Results" />
                     <div className='table-container'>
                         <Link className='add-link' to="/result/add">Add Result</Link>
-                        <table>
-                            <thead>
-                                <tr id="header">
-                                    <th>Student Full Name</th>
-                                    <th>Course Name</th>
-                                    <th>Grade</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {results?.map(result => (
-                                    <tr key={result.id}>
-                                        <td>{`${result.student.firstName} ${result.student.familyName}`}</td>
-                                        <td>{result.course.courseName}</td>
-                                        <td>{result.grade}</td>
+                        {results && results.length !== 0 ? (
+                            <table>
+                                <thead>
+                                    <tr id="header">
+                                        <th>Student Full Name</th>
+                                        <th>Course Name</th>
+                                        <th>Grade</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {results?.map(result => (
+                                        <tr key={result.id}>
+                                            <td>{`${result.student.firstName} ${result.student.familyName}`}</td>
+                                            <td>{result.course.courseName}</td>
+                                            <td>{result.grade}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <div>
+                                No results have been added yet. Click the "Add" button to add results.
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

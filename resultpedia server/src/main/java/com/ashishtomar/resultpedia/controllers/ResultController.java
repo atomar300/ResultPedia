@@ -32,37 +32,6 @@ public class ResultController {
 
 
 
-    @PutMapping("/result/{id}")
-    public ResponseEntity<String> updateResult(@PathVariable("id") String id, @Valid @RequestBody ResultDTO resultDTO) {
-
-        resultService.updateResult(id, resultDTO);
-
-        return new ResponseEntity<>("Result was updated successfully!", HttpStatus.OK);
-    }
-
-
-
-    @DeleteMapping("/result/{id}")
-    public ResponseEntity<String> deleteResult(@PathVariable("id") String id){
-
-        resultService.deleteResult(id);
-
-        return new ResponseEntity<>("Result was deleted successfully!", HttpStatus.OK);
-    }
-
-
-
-
-    @GetMapping("/result/{id}")
-    public ResponseEntity<Result> getOneResult(@PathVariable("id") String id){
-
-        Result result = resultService.getResultById(id);
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }
-
-
-
     @GetMapping("/results")
     public ResponseEntity<List<Result>> getAllResults(){
 

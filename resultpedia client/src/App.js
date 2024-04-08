@@ -1,5 +1,5 @@
 import './App.css';
-import { Header } from './components/header/Header.js';
+import Header from './components/header/Header.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './components/home/Home.js';
 import Students from './components/students/Students.js';
@@ -9,14 +9,15 @@ import Footer from './components/footer/Footer.js';
 import AddStudent from './components/students/AddStudent.js';
 import AddCourse from './components/courses/AddCourse.js';
 import AddResult from './components/results/AddResult.js';
-import TestHeader from './components/test/TestHeader.js';
+
+
 
 function App() {
+
   return (
     <div>
       <BrowserRouter>
-        {/* <Header /> */}
-        <TestHeader />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
 

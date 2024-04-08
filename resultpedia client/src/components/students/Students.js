@@ -30,26 +30,32 @@ const Students = () => {
                     <PageTitle title="Students" />
                     <div className='table-container'>
                         <Link className='add-link' to="/student/add">Add Student</Link>
-                        <table>
-                            <thead>
-                                <tr id="header">
-                                    <th>First name</th>
-                                    <th>Family name</th>
-                                    <th>Student Number</th>
-                                    <th>Date of Birth</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {students?.map(student => (
-                                    <tr key={student.id}>
-                                        <td>{student.firstName}</td>
-                                        <td>{student.familyName}</td>
-                                        <td>{student.studentNumber}</td>
-                                        <td>{student.birthDate}</td>
+                        {students && students.length !== 0 ? (
+                            <table>
+                                <thead>
+                                    <tr id="header">
+                                        <th>First name</th>
+                                        <th>Family name</th>
+                                        <th>Student Number</th>
+                                        <th>Date of Birth</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {students?.map(student => (
+                                        <tr key={student.id}>
+                                            <td>{student.firstName}</td>
+                                            <td>{student.familyName}</td>
+                                            <td>{student.studentNumber}</td>
+                                            <td>{student.birthDate}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <div>
+                                No students have been added yet. Click the "Add" button to add students.
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

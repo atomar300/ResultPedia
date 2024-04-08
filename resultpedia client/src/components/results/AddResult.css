@@ -14,13 +14,14 @@
 }
 
 .special-form-group {
-    margin-bottom: 30px;
-    width: 30vw;
+    margin: 20px;
+    width: 50vw;
+    padding: 1vmax;
+
 }
 
 .special-form-group label {
-    width: 100%;
-    padding: 0.5vmax;
+    padding: 1vmax;
     border-radius: 8px;
     border: none;
     font-size: 1.2vmax;
@@ -56,15 +57,16 @@
 
 
     .special-form-group{
-        width: 100vw;
+        width: 80vw;
     }
 
     .special-form-group label {
-        padding: 1.5vmax;
+        padding: 2vmax;
         font-size: 2vmax;
     }
 
     .special-form-group label select {
+        width: 20vmax;
         font-size: 2vmax;
     }
 

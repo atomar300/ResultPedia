@@ -14,8 +14,6 @@ public interface ResultRepository extends MongoRepository<Result, String> {
 
     List<Result> findByCourse(Course course);
 
-    List<Result> findByStudent(Student student);
-
     boolean existsByStudentAndCourse(Student student, Course course);
 
     Result findByStudentAndCourse(Student student, Course course);

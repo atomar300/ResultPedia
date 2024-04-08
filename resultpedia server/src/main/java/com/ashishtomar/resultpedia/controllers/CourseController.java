@@ -31,36 +31,6 @@ public class CourseController {
 
 
 
-    @PutMapping("/course/{id}")
-    public ResponseEntity<String> updateCourse(@PathVariable("id") String id, @Valid @RequestBody Course course) {
-
-        courseService.updateCourse(id, course);
-
-        return new ResponseEntity<>("Course was updated successfully!", HttpStatus.OK);
-    }
-
-
-
-    @DeleteMapping("/course/{id}")
-    public ResponseEntity<String> deleteCourse(@PathVariable("id") String id){
-
-        courseService.deleteCourse(id);
-
-        return new ResponseEntity<>("Course was deleted successfully!", HttpStatus.OK);
-    }
-
-
-
-
-    @GetMapping("/course/{id}")
-    public ResponseEntity<Course> getOneCourse(@PathVariable("id") String id){
-
-        Course course = courseService.getCourseById(id);
-
-        return new ResponseEntity<>(course, HttpStatus.OK);
-    }
-
-
 
     @GetMapping("/courses")
     public ResponseEntity<List<Course>> getAllCourses(){

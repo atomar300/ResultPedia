@@ -29,24 +29,30 @@ const Courses = () => {
                     <PageTitle title="Courses" />
                     <div className='table-container'>
                         <Link className='add-link' to="/course/add">Add Course</Link >
-                        <table>
-                            <thead>
-                                <tr id="header">
-                                    <th>Course Name</th>
-                                    <th>Course Code</th>
-                                    <th>Course Average</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {courses?.map(course => (
-                                    <tr key={course.id}>
-                                        <td>{course.courseName}</td>
-                                        <td>{course.courseCode}</td>
-                                        <td>{course.courseAverage === 0 ? "Not Available Yet" : course.courseAverage}</td>
+                        {courses && courses.length !== 0 ? (
+                            <table>
+                                <thead>
+                                    <tr id="header">
+                                        <th>Course Name</th>
+                                        <th>Course Code</th>
+                                        <th>Course Average</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {courses?.map(course => (
+                                        <tr key={course.id}>
+                                            <td>{course.courseName}</td>
+                                            <td>{course.courseCode}</td>
+                                            <td>{course.courseAverage === 0 ? "Not Available Yet" : course.courseAverage}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <div>
+                                No courses have been added yet. Click the "Add" button to add courses.
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
