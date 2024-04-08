@@ -1,0 +1,90 @@
+.navbar {
+    background-color: rgb(50, 50, 50);
+    height: 70px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.logo{
+    font-size: 1.5rem;
+    margin-left: 2vmax;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.menu-bars {
+    margin-left: 2vmax;
+    background: none;
+    color: white;
+}
+
+.menu-bars svg {
+    font-size: 2vmax;
+}
+
+.nav-menu {
+    background-color: rgb(50, 50, 50);
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+    z-index: 2;
+}
+
+.nav-menu.active {
+    left: 0;
+    transition: 350ms;
+}
+
+.nav-menu-items {
+    color: white;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;   
+}
+
+
+.nav-menu-items li {
+    margin: 0.8vmax;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-menu-items li a{
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 1vmax 0.5vmax;
+}
+
+.nav-menu-items svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vmax;
+}
+
+.nav-menu-items li a:hover {
+    background-color: rgb(20, 20, 20);
+    border-radius: 8px;
+}
+
+@media (max-width: 700px){
+
+    .navbar {
+        height: 50px;
+    }
+
+    .nav-menu{
+        width: 100px;
+        padding: 2vmax;
+    }
+}
