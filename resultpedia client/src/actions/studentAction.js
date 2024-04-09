@@ -15,7 +15,9 @@ export const getStudents = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_STUDENT_REQUEST });
 
-        const { data } = await Api.get(`/api/v1/students`);
+        const token = (localStorage.getItem("token"));
+        const config = { headers: { "Authorization" : `Bearer ${token}` } }
+        const { data } = await Api.get(`/api/v1/students`, config);
 
         dispatch({ type: ALL_STUDENT_SUCCESS, payload: data })
 
@@ -30,7 +32,8 @@ export const newStudent = (studentData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_STUDENT_REQUEST });
 
-        const config = { headers: { "Content-Type": "application/json" } }
+        const token = (localStorage.getItem("token"));
+        const config = { headers: { "Content-Type": "application/json", "Authorization" : `Bearer ${token}` } }
         await Api.post(`/api/v1/student/add`, studentData, config);
 
         dispatch({ type: NEW_STUDENT_SUCCESS})

@@ -15,7 +15,10 @@ export const getCourses = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_COURSE_REQUEST });
 
-        const { data } = await Api.get(`/api/v1/courses`);
+        const token = (localStorage.getItem("token"));
+        const config = {  headers: {"Authorization" : `Bearer ${token}`}  }
+
+        const { data } = await Api.get(`/api/v1/courses`, config);
         
         dispatch({ type: ALL_COURSE_SUCCESS, payload: data });
 
@@ -30,7 +33,8 @@ export const newCourse = (courseData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_COURSE_REQUEST });
 
-        const config = { headers: { "Content-Type": "application/json" } }
+        const token = (localStorage.getItem("token"));
+        const config = { headers: { "Content-Type": "application/json", "Authorization" : `Bearer ${token}` } }
         await Api.post(`/api/v1/course/add`, courseData, config);
 
         dispatch({ type: NEW_COURSE_SUCCESS })

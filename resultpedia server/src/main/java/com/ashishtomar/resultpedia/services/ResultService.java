@@ -45,12 +45,14 @@ public class ResultService implements IResultService {
         }
         Course course = courseDate.get();
 
+        // checking if the grade by this student already exist if yes then change the grade
         if (resultRepository.existsByStudentAndCourse(student, course)){
             Result result = resultRepository.findByStudentAndCourse(student, course);
             result.setGrade(resultDTO.getGrade());
             resultRepository.save(result);
         }
 
+        // If it is a new student being graded
         else{
             // Creating Result Object
             Result result = new Result(student, course, resultDTO.getGrade());
@@ -81,7 +83,7 @@ public class ResultService implements IResultService {
             count++;
         }
 
-        courseAverage = totalPercentage / count;
+        courseAverage = (int) Math.ceil(totalPercentage / count);
 
         // Setting the calculated course average
         course.setCourseAverage(courseAverage);

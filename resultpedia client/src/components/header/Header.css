@@ -14,6 +14,11 @@
     color: white;
 }
 
+.header-links{
+    color: white;
+    margin-left: 2vmax;
+}
+
 .menu-bars {
     margin-left: 2vmax;
     background: none;
@@ -92,5 +97,9 @@
 
     .nav-menu-items li svg {
         font-size: 3vmax;
+    }
+
+    .menu-bars{
+        font-size: 4vmax;
     }
 }

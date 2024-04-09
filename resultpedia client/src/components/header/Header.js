@@ -3,12 +3,26 @@ import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import PersonIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { logout } from '../../actions/userAction';
+import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
 
 const Header = () => {
+    const dispatch = useDispatch();
+    
+    const { isAuthenticated } = useSelector((state) => state.user);
+
     const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
+
+    const logMeOut = () => {
+        dispatch(logout());
+        toast.success("Logged out successfully!");
+    }
 
     return (
         <div>
@@ -18,6 +32,12 @@ const Header = () => {
                 <Link to="/" className="logo">
                     ResultPedia
                 </Link>
+
+                <Link to="/login" className='header-links'>
+                    <PersonIcon />
+                </Link>
+
+                    {isAuthenticated ? <LogoutIcon className='header-links'  onClick={logMeOut} /> : false}
             </div>
 
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>

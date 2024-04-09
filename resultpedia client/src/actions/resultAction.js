@@ -15,7 +15,9 @@ export const getResults = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_RESULT_REQUEST });
 
-        const { data } = await Api.get(`/api/v1/results`);
+        const token = (localStorage.getItem("token"));
+        const config = { headers: { "Content-Type": "application/json","Authorization" : `Bearer ${token}` } }
+        const { data } = await Api.get(`/api/v1/results`, config);
 
         dispatch({ type: ALL_RESULT_SUCCESS, payload: data })
 
@@ -30,7 +32,9 @@ export const newResult = (resultData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_RESULT_REQUEST });
 
-        const config = { headers: { "Content-Type": "application/json" } }
+
+        const token = (localStorage.getItem("token"));
+        const config = { headers: { "Content-Type": "application/json", "Authorization" : `Bearer ${token}` } }
         await Api.post(`/api/v1/result/add`, resultData, config);
 
         dispatch({ type: NEW_RESULT_SUCCESS })
